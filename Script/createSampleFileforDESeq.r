@@ -1,4 +1,4 @@
-commandArgs(trailingOnly = TRUE)
+args <- commandArgs(trailingOnly = TRUE)
 print(args)
 
 #### explanation for the args ####
@@ -8,7 +8,7 @@ print(args)
 #### create a sample data frame for the files ####
 
 files <- list.files(path = args[1], pattern="*.genes.results", full.names=TRUE) ### get the file path and file name ###
-legnth(files)
+length(files)
 
 ### get sample name from the file names ###
 sample_names <- gsub(".genes.results", "", basename(files))
