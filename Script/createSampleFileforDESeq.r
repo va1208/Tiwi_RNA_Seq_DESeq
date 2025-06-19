@@ -3,10 +3,9 @@ print(args)
 
 #### explanation for the args ####
 ### args 1  - file path for star_rsem ###
-### args 2 - path to save the sample file ### dont put the last slash in the path
+### args 2 - path to save the sample file ### dont put last slash in the path
 ### args 3 - output prefix
 #### create a sample data frame for the files ####
-
 files <- list.files(path = args[1], pattern="*.genes.results", full.names=TRUE) ### get the file path and file name ###
 length(files)
 
@@ -45,16 +44,17 @@ samples <- data.frame(gene = gene_names,
                             stringsAsFactors = FALSE)
 
 ### create a folder to save the file #####
-if (!dir.exists("sample_metadata_by_gene")) {
-  dir.create("sample_metadata_by_gene")
+if (!dir.exists("/work/NagarajLab_BG/16_Tiwi_RNAseq/01_DifferntialExp/sample_metadata_by_gene")) {
+  dir.create("/work/NagarajLab_BG/16_Tiwi_RNAseq/01_DifferntialExp/sample_metadata_by_gene")
 }
 
 ### get unique gene####
 unique_genes <- unique(samples$gene)
 
 for (g in unique_genes) {
-  gene_df <- samples_df[samples$gene == g, ]
-  output_file <- paste0(args[2], "/","sample_metadata_by_gene", "/", g, "_samples.tsv"))
+  gene_df <- samples[samples$gene == g, ]
+  output_file <- paste0(args[2], "/","sample_metadata_by_gene/", g, "_samples.tsv")
+  print(output_file)
   write.table(gene_df, output_file, row.names = F, quote = F)
   message("Written metadata for gene: ", g)
 }
