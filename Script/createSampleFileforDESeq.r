@@ -3,7 +3,7 @@ print(args)
 
 #### explanation for the args ####
 ### args 1  - file path for star_rsem ###
-### args 2 - path to save the sample file ### dont put last slash in the path
+### args 2 - path to save the sample file ### dont put the last slash in the path
 ### args 3 - output prefix
 #### create a sample data frame for the files ####
 
@@ -32,7 +32,7 @@ samples <- data.frame(sample = sample_names,
 
 print(dim(samples))
 
-write.table(samples, paste0(args[2], "/", args[3] "_sample_file.tsv"), quote = F, row.names = F)
+write.table(samples, paste0(args[2], "/", args[3], "_sample_file.tsv"), quote = F, row.names = F)
 print("all gene sample file saved in the given folder")
 
 ### spilit by gene ###
