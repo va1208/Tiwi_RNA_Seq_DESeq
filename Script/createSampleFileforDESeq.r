@@ -50,10 +50,10 @@ if (!dir.exists("sample_metadata_by_gene")) {
 }
 
 ### get unique gene####
-unique_genes <- unique(samples_df$gene)
+unique_genes <- unique(samples$gene)
 
 for (g in unique_genes) {
-  gene_df <- samples_df[samples_df$gene == g, ]
+  gene_df <- samples_df[samples$gene == g, ]
   output_file <- paste0(args[2], "/","sample_metadata_by_gene", "/", g, "_samples.tsv"))
   write.table(gene_df, output_file, row.names = F, quote = F)
   message("Written metadata for gene: ", g)
